@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import {Card, Button } from 'react-bootstrap'
 
 export default function Products() {
   const [products, SetProducts] = useState([])
@@ -19,11 +20,18 @@ export default function Products() {
         products.map((product) => {
           const { productId, productName, productDescription, productPrice } = product
           return (
-            <div key={productId}>
-              <h1>{productName}</h1>
-              <h3>{productDescription}</h3>
-              <h5>{productPrice}</h5>
-            </div>
+            <Card style={{ width: '18rem' }} key={productId}>
+            <Card.Body>
+              <Card.Title>{productName}</Card.Title>
+              <Card.Text>
+                {productDescription}
+              </Card.Text>
+              <Card.Text>
+                ${productPrice}.00
+              </Card.Text>
+              <Button>Add to Cart</Button>
+            </Card.Body>
+          </Card>
           )})}
     </>
   )
